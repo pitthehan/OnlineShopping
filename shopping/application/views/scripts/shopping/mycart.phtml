@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <h1>My Cart</h1>
+        <form action="/shopping/updatecart" method="post">
+            <table width="700px">
+                <tr>
+                    <td>ID</td>
+                    <td>Book Name</td>
+                    <td>Price</td>
+                    <td>Publishing house</td>
+                    <td>Number</td>
+                    <td>Delete</td>
+                </tr>
+                <?php foreach ($this->books as $book) {?>
+                <tr>
+                    <td><?php echo $book['id']?></td>
+                    <td><?php echo $book['name']?></td>
+                    <td><?php echo $book['price']?></td>
+                    <td><?php echo $book['publishHouse']?></td>
+                <input type='hidden' name='bookids[]' value='<?php echo $book['id']?>' />
+                       <td><input type='text' name='booknums[]' value='<?php echo $book['nums']?>' /></td>
+                <td><a href='/shopping/delproduct?id=<?php echo $book['id']?>'>delete</a></td>
+                <?php }?>
+                <tr>
+                    <td colspan="4">
+                        Total cost in mycart: <?php echo $this->total_price?> dollars
+                    </td>
+                    <td><input type="submit" value="Update Number" /></td>
+                    <td><a href='/hall/gohallui'>Back to Hall</a></td>
+                   
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
